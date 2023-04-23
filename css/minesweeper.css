@@ -1,0 +1,119 @@
+html {
+  font-family: Helvetica;
+}
+body {
+  color: rgb(239, 166, 239);
+  background-color: rgb(239, 166, 239);
+}
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  width: 80vw;
+  padding: 30px;
+  background-color: black;
+  margin: 3% auto;
+  border-radius: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+.bomb {
+  color: black;
+  background-image: url(img/bomb.svg);
+}
+
+.flag {
+  color: red;
+}
+
+.number0 {
+  color: white;
+}
+
+.number1 {
+  color: blue;
+}
+
+.number2 {
+  color: #007b00;
+}
+
+.number3 {
+  color: red;
+}
+
+.number4 {
+  color: #00007b;
+}
+
+.number5 {
+  color: #7b0000;
+}
+
+.number6 {
+  color: #006968;
+}
+
+.number7 {
+  color: #007b7b;
+}
+button {
+  padding: 10px 30px;
+  margin: 30px 0 40px 0;
+  border-radius: 10px;
+  background-color: rgb(239, 166, 239);
+  font-size: 1.25rem;
+}
+.number8 {
+  color: #7b7b7b;
+}
+#type {
+  display: none;
+}
+#level {
+  display: none;
+}
+
+#board table {
+  border-collapse: separate;
+  border-spacing: 0px;
+  font-weight: bold;
+}
+
+#board td {
+  background: #bdbdbd;
+  color: #007b00;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+
+  border-left: solid 1px #7b7b7b;
+  border-top: solid 1px #7b7b7b;
+  border-bottom: none;
+  border-right: none;
+}
+
+#board td.closed {
+  width: 27px;
+  height: 27px;
+  border-bottom: solid 2px #7b7b7b;
+  border-right: solid 2px #7b7b7b;
+  border-top: solid 2px #fff;
+  border-left: solid 2px #fff;
+}
+
+.tr-sq-one {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  left: 10px;
+  top: 10px;
+  position: relative;
+  display: inline-block;
+  transform: rotate(-45deg);
+  line-height: 100px;
+}

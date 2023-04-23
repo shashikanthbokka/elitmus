@@ -1,0 +1,75 @@
+#collage hr {
+  border: none;
+  border-top: 2px solid #f5f2f2;
+  height: 1px;
+}
+body {
+  background-color: black;
+  font-size: 2rem;
+  transition: 3s ease-in;
+}
+#collage #playPanel {
+  background-color: #bbada0;
+  border-radius: 20px;
+  margin: 7.5% auto;
+  width: 65%;
+}
+
+#collage #actualImageBox {
+  display: inline-block;
+  font-size: 0.8em;
+  margin: 10px 10px;
+  vertical-align: top;
+  width: 280px;
+}
+
+#collage #stepBox,
+#collage #timeBox {
+  display: inline-block;
+  width: 48%;
+}
+
+#collage #stepBox div {
+  background-color: #bbada0;
+  display: inline-block;
+  padding: 1px 4px;
+  margin: 0px auto;
+  max-width: 800px;
+}
+
+#collage img#actualImage {
+  border: 2px solid #a46;
+  height: 280px;
+  width: 280px;
+}
+
+#collage #sortable {
+  border: 2px solid #a46;
+  list-style-type: none;
+  display: inline-block;
+  margin: 10px;
+  padding: 0;
+  width: 400px;
+}
+
+#collage #sortable li {
+  background-size: 400% 400%;
+  border: none;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+
+#collage button {
+  background-color: #f5f2f2;
+  border: 1px solid #cce;
+  display: inline;
+  font-size: 14px;
+  height: auto;
+  width: auto;
+  padding: 5px 12px;
+  border-radius: 20px;
+}

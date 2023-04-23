@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Escape</title>
+    <link rel="stylesheet" href="/css/global.css" />
+  </head>
+
+  <body>
+    <video autoplay muted>
+      <source src="/assets/video6.mp4" type="video/mp4" />
+    </video>
+    <script>
+      const video = document.querySelector("video");
+      const body = document.querySelector("body");
+
+      video.addEventListener("ended", () => {
+        body.classList.add("loaded");
+        setTimeout(() => {
+          window.location.href = "/html/end.html";
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>

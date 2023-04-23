@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/minesweeper.css" type="text/css" media="screen" />
+    <script src="/js/minesweeper/Event.js"></script>
+    <script src="/js/minesweeper/Game.js"></script>
+    <script src="/js/minesweeper/BoardModel.js"></script>
+    <script src="/js/minesweeper/BoardView.js"></script>
+    <script src="/js/minesweeper/Board.js"></script>
+  </head>
+    <title>Escape</title>
+  </head>
+  <body>
+    <video id="video-5" autoplay muted>
+      <source src="/assets/video5.mp4" type="video/mp4" />
+    </video>
+    <div class="container">
+      <h1>MineSweeper</h1>
+
+      <select id="type">
+        <option value="classic" selected="selected">Classic</option>
+        <!-- <option value="hexagonal">Hexagonal</option> -->
+        <!-- <option value="truncated-square">Truncated Square</option> -->
+      </select>
+
+      <select id="level">
+        <option value="beginner" selected="selected">Beginner</option>
+        <!-- <option value="intermediate">Intermediate</option> -->
+        <!-- <option value="expert">Expert</option> -->
+      </select>
+
+      <button onclick="Game.start();">Start</button>
+      <!--<button onclick="Game.restart();">Restart</button> -->
+
+      <div id="board"></div>
+    </div>
+    <script>
+      const video = document.querySelector("video");
+      const body = document.querySelector("body");
+
+      video.addEventListener("ended", () => {
+        body.classList.add("loaded");
+
+        document.getElementById("video-5").style.height = "0px";
+      });
+    </script>
+  </body>
+</html>
