@@ -10,5 +10,6 @@ the soft skills that are being assesed indirectly from the player :
 	puzzle 5 -  natural intution and guessing 
 	
 
-google authentication for login and the videos should be downloaded and made into a single folder names assets . In that folder you should store the videos and images folder .
+google authentication is used for login. 
+The videos should be downloaded and made into a single folder names assets . In that folder you should store the videos and images folder .
 the following zips are available in this repo so that for each video the src will be "assets/video-1.mp4" and for iamges it will be "assets/images/london-bridge.jpeg"
