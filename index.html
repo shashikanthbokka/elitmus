@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escape</title>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  </head>
+  <body>
+    <button id="button1">Google Signin</button>
+    <button onclick="window.googleSignout()">Google Signout</button>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-app.js";
+      import {
+        getDatabase,
+        set,
+        ref,
+        update,
+        onValue,
+      } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-database.js";
+      import {
+        getAuth,
+        signInWithPopup,
+        GoogleAuthProvider,
+      } from "https://www.gstatic.com/firebasejs/9.20.0/firebase-auth.js";
+      const app = initializeApp({
+        apiKey: "AIzaSyCGqYkypNBsj3-D05-7CiDZQd-eHmjuksg",
+        authDomain: "project-escape-23.firebaseapp.com",
+        projectId: "project-escape-23",
+        storageBucket: "project-escape-23.appspot.com",
+        messagingSenderId: "346453512843",
+        appId: "1:346453512843:web:e00ababbff8e43f820fa8e",
+      });
+      const provider = new GoogleAuthProvider();
+      async function writeUserData(user) {
+        const db = getDatabase();
+        await update(ref(db, "users/" + user.uid), {
+          name: user.displayName,
+          mail: user.email,
+          uid: user.uid,
+        });
+        window.location.href = "/html/start.html";
+      }
+      const auth = getAuth(app);
+      console.log(provider);
+      function googleSignin() {
+        signInWithPopup(auth, provider)
+          .then(async (result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            console.log(user);
+            localStorage.setItem("user", JSON.stringify(user));
+            // alert("Success");
+            const db = getDatabase();
+            const starCountRef = ref(db, "admin");
+            onValue(starCountRef, (snapshot) => {
+              const data = snapshot.val();
+              console.log(data);
+              let mails = Object.keys(data);
+              for (let i = 0; i < mails.length; i++) {
+                if (data[mails[i]] == user.email) {
+                  window.location.href = "admin.html";
+                }
+              }
+              writeUserData(user);
+            });
+
+            // IdP data available using getAdditionalUserInfo(result)
+            // ...
+          })
+          .catch((error) => {
+            alert("fail");
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+          });
+      }
+
+      function googleSignout() {
+        firebase
+          .auth()
+          .signOut()
+
+          .then(
+            function () {
+              console.log("Signout Succesfull");
+            },
+            function (error) {
+              console.log("Signout Failed");
+            }
+          );
+      }
+
+      document
+        .getElementById("button1")
+        .addEventListener("click", googleSignin);
+
+      // writeUserData("name 1", "dspsai@gmail.com");
+    </script>
+  </body>
+</html>
